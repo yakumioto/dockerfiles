@@ -1,0 +1,18 @@
+---
+version: "2"
+
+services:
+  ss:
+    image: mritd/shadowsocks
+    network_mode: "host"
+    restart: always
+    command: [
+      "-s", 
+      '0.0.0.0 -p 8989 -m chacha20-ietf-poly1305 -k yakumioto --plugin obfs-server --plugin-opts "obfs=tls;obfs-host=support.microsoft.com" --fast-open']
+
+  haproxy:
+    image: haproxy
+    network_mode: "host"
+    restart: always
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
