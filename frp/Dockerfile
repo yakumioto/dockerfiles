@@ -2,12 +2,10 @@ FROM alpine:latest
 
 LABEL maintainer="yakumioto <yaku.mioto@gmail.com>"
 
-ARG version=0.13.0
+ARG version=0.23.1
 
 RUN set -ex \
-    && apk add --no-cache tar curl \
+    && apk add --no-cache tar gzip curl \
     && curl -sSL https://github.com/fatedier/frp/releases/download/v${version}/frp_${version}_linux_amd64.tar.gz | tar xz \
-    && cd frp_${version}_linux_amd64 \
-    && cp frpc frps /bin \
-    && cd .. \
+    && cp frp_${version}_linux_amd64/frpc frp_${version}_linux_amd64/frps /usr/bin \
     && rm -rf frp_${version}_linux_amd64
