@@ -2,7 +2,7 @@ FROM alpine:latest
 
 LABEL maintainer="yakumioto <yaku.mioto@gmail.com>"
 
-ARG version=0.23.1
+ARG version=0.27.0
 
 RUN set -ex \
     && apk add --no-cache tar gzip curl \
